@@ -52,7 +52,7 @@
                         <p class="mb-2">If this isn't provided, we will generate a random string of characters</p>
                         <div class="field has-addons">
                             <div class="control">
-                                <a class="button is-static">{{host}}</a>
+                                <a class="button is-static">{{host}}/</a>
                             </div>
                             <div class="control">
                                 <input class="input" type="text" name="short_link_ending" autocomplete="off">
@@ -70,9 +70,9 @@
             </div>
         </div>
 
-        <!-- Already shortened URLs from the session -->
-        <div class="card mt-5">
-            <div class="card-content" id="urls-shortened" >
+        <!-- Already shortened URLs -->
+        <div class="card mt-5" id="urls-shortened-card" style="visibility: hidden;">
+            <div class="card-content" id="urls-shortened">
                 <h3 class="is-size-4 mb-3">URLs shortened</h3> 
             </div>
         </div>

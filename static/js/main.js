@@ -1,5 +1,6 @@
 const form = document.getElementById("form");
 const urls_shortened = document.getElementById("urls-shortened");
+const urls_shortened_card = document.getElementById("urls-shortened-card");
 
 function on_form_submit() {
     $.ajax({
@@ -11,7 +12,9 @@ function on_form_submit() {
             qrcode_url = new QRious({
                 value: `http://${host}/${data.short_link_ending}`
               }).toDataURL();
-              
+            
+            urls_shortened_card.style.setProperty("visibility", "visible");
+
             urls_shortened.innerHTML = urls_shortened.innerHTML + `
             <article class="message mb-2">
                 <div class="message-body">
