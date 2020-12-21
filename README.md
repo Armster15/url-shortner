@@ -1,4 +1,6 @@
 # 🔗URL Shortner
+
+<img src="images/demo.png">
 This is a simple URL shortner built with Flask for the backend and Bulma for the front end
 
 ## 🛠 Setting up
