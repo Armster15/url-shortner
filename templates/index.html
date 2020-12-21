@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortner</title>
+
+    <!-- Bulma -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bulma.css')}}">
+
+    <!-- Bulma Toast-->
+    <script src="{{url_for('static', filename='node_modules/bulma-toast/dist/bulma-toast.min.js')}}"></script>
+    
+    <!-- Bulma Tooltips -->
+    <link rel="stylesheet" href="{{url_for('static', filename='node_modules/@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css')}}">
+    
+    <!-- jQuery -->
+    <script src="{{url_for('static', filename='node_modules/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='node_modules/jQuery.serializeObject/dist/jquery.serializeObject.min.js')}}"></script>
+
+    <!-- QRious -->
+    <script src="{{url_for('static', filename='node_modules/qrious/dist/qrious.min.js')}}"></script>
+
+    <script>const host = "{{host}}";</script>
+</head>
+<body>
+    <div class="container mt-3">
+        <h1 class="is-size-2 mb-3">URL Shortner</h1>
+
+        {% if error %}
+            <article class="message is-danger">
+                <div class="message-body">
+                    {{error}}
+                </div>
+            </article>
+        {% endif %}
+        
+        <!-- Create a new shortnened URL -->
+        <div class="card">
+            <div class="card-content">
+                <h3 class="is-size-4 mb-3">Shorten a URL</h3>
+                <form id="form" onsubmit="on_form_submit(); return false">
+                    <div class="field">
+                        <label class="label">Long URL<span class="ml-1" style="color:red;">*</span></label>
+                        <div class="control">
+                            <input class="input" type="text" name="long_url" placeholder="Paste a Long URL" autocomplete="off">
+                        </div>
+                    </div>
+                    
+                    <div class="field">
+                        <label class="label">Shortened URL</label>
+                        <p class="mb-2">If this isn't provided, we will generate a random string of characters</p>
+                        <div class="field has-addons">
+                            <div class="control">
+                                <a class="button is-static">{{host}}</a>
+                            </div>
+                            <div class="control">
+                                <input class="input" type="text" name="short_link_ending" autocomplete="off">
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            {{ xcaptcha }}
+                        </div>
+                    </div>
+                    <input class="button" type="submit" value="Shorten!">
+                </form>
+            </div>
+        </div>
+
+        <!-- Already shortened URLs from the session -->
+        <div class="card mt-5">
+            <div class="card-content" id="urls-shortened" >
+                <h3 class="is-size-4 mb-3">URLs shortened</h3> 
+            </div>
+        </div>
+    </div>
+    
+    <!-- Spacing for the bottom -->
+    <div style="margin-top:300px;"></div>
+
+    <!-- JavaScript -->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>
