@@ -71,7 +71,11 @@ def add_link():
 
     if data["short_link_ending"].strip() == "":
         data["short_link_ending"] = generate_random_string()
-
+        exists = collection.find_one({"short_link_ending": data["short_link_ending"]})
+        while exists is not None:
+            data["short_link_ending"] = generate_random_string()
+            exists = collection.find_one({"short_link_ending": data["short_link_ending"]})
+            
     exists = collection.find_one({"short_link_ending": data["short_link_ending"]})
     if exists is not None or data["short_link_ending"] in restricted: # If the short link ending already exists
         return jsonify({"error": "This short link ending already exists"}), 400
