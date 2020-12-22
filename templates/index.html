@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Shortner</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/stylesheet.css')}}">
 
     <!-- Bulma -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/bulma.css')}}">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="{{url_for('static', filename='node_modules/@fortawesome/fontawesome-free/css/all.css')}}">
 
     <!-- Bulma Toast-->
     <script src="{{url_for('static', filename='node_modules/bulma-toast/dist/bulma-toast.min.js')}}"></script>
@@ -24,9 +28,18 @@
     <script>const host = "{{host}}";</script>
 </head>
 <body>
-    <div class="container mt-3">
-        <h1 class="is-size-2 mb-3">URL Shortner</h1>
+    <nav class="navbar mx-5 my-3">
+        <div class="navbar-brand">
+            <h1 class="is-size-2 mb-3">URL Shortner</h1>
+        </div>
 
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <a class="button" href="https://github.com/Armster15/url-shortner" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-3">
         {% if error %}
             <article class="message is-danger">
                 <div class="message-body">
