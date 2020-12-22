@@ -70,10 +70,10 @@ def add_link():
         return jsonify({"error": 'The URL provided is not a valid URL.\nCheck if you have "http://" at the beginning of your URL'}), 400
 
     if data["short_link_ending"].strip() == "":
-        data["short_link_ending"] = generate_random_string()
+        data["short_link_ending"] = generate_random_string().lower()
         exists = collection.find_one({"short_link_ending": data["short_link_ending"]})
         while exists is not None:
-            data["short_link_ending"] = generate_random_string()
+            data["short_link_ending"] = generate_random_string().lower()
             exists = collection.find_one({"short_link_ending": data["short_link_ending"]})
             
     exists = collection.find_one({"short_link_ending": data["short_link_ending"]})
