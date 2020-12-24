@@ -1,0 +1,5 @@
+Flask
+Flask-xCaptcha
+pymongo
+python-dotenv
+validators
