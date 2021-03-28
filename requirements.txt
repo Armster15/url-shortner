@@ -1,6 +1,5 @@
 Flask
 Flask-xCaptcha
-gunicorn
 pymongo
 python-dotenv
 validators
